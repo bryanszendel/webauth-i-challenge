@@ -14,15 +14,6 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-  const user = req.body
-  Users.add(user)
-    .then(user => {
-      res.status(201).json(user)
-    })
-    .catch(err => {
-      res.status(500).json({ message: 'Error adding the user.'} )
-    })
-})
+
 
 module.exports = router;
