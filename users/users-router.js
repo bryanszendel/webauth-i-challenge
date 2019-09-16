@@ -3,8 +3,11 @@ const router = express.Router()
 const db = require('../data/db-config.js')
 const Users = require('./users-model.js')
 
+// imported middleware
+const restricted = require('../auth/restricted-middleware.js')
+
 // Endpoints
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
   Users.findUsers()
     .then(users => {
       res.status(200).json(users)
